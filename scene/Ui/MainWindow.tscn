@@ -59,6 +59,7 @@ texture_filter = 1
 layout_mode = 2
 text = "Start"
 script = ExtResource("2_orkwj")
+startLevel = "C:/Users/Evgen/Documents/GitHub/winter_jam/scene/sv_scenes_01/lvl_sv_02.tscn"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
