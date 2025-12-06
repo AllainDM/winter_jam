@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=11 format=4 uid="uid://cujin7o3a8m8v"]
 
 [ext_resource type="Script" uid="uid://dxjj6d8f2c6x1" path="res://script/world.gd" id="1_pjass"]
@@ -778,8 +779,11 @@ texture = ExtResource("2_m5mgf")
 [sub_resource type="TileSet" id="TileSet_jsnws"]
 sources/0 = SubResource("TileSetAtlasSource_na5tu")
 
-[node name="world" type="Node2D"]
+
+[node name="worldSA" type="Node2D"]
+position = Vector2(2, 0)
 script = ExtResource("1_pjass")
+
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -810,3 +814,4 @@ texture = ExtResource("4_0tg4p")
 [node name="TileMapLayer" type="TileMapLayer" parent="Envirement"]
 tile_map_data = PackedByteArray("AAA+ACEAAAAQAAgAAAA+ACIAAAAQAAkAAAA/ACEAAAARAAgAAAA/ACIAAAARAAkAAAA5ACMAAAAQAAoAAAA5ACQAAAAQAAsAAAA6ACMAAAARAAoAAAA6ACQAAAARAAsAAAA3ABwAAAASAAgAAAA3AB0AAAASAAkAAAA4ABwAAAATAAgAAAA4AB0AAAATAAkAAABBAB8AAAASAAgAAABBACAAAAASAAkAAABCAB8AAAATAAgAAABCACAAAAATAAkAAAA=")
 tile_set = SubResource("TileSet_jsnws")
+
