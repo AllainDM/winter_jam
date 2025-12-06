@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1maio5hqo01d"]
+[gd_scene load_steps=11 format=3 uid="uid://b1maio5hqo01d"]
 
+[ext_resource type="Script" uid="uid://bh0ygqsaxecdt" path="res://script/bot_scene.gd" id="1_oms2k"]
 [ext_resource type="Texture2D" uid="uid://bl7lo3pum5tj1" path="res://player.png" id="1_opt03"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oms2k"]
@@ -56,6 +57,7 @@ animations = [{
 
 [node name="bots" type="CharacterBody2D"]
 position = Vector2(12, 16)
+script = ExtResource("1_oms2k")
 
 [node name="Area2D" type="Area2D" parent="."]
 
