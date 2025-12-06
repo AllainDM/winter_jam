@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cujin7o3a8m8v"]
+[gd_scene load_steps=11 format=4 uid="uid://d3m5udbjvvxw0"]
 
 [ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://Assets/Environment/spritesheet.png" id="2_m5mgf"]
 [ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://Assets/Environment/Decoration/Log_Cabin.png" id="3_emkrx"]
@@ -780,7 +780,6 @@ sources/0 = SubResource("TileSetAtlasSource_na5tu")
 
 [node name="worldSA" type="Node2D"]
 position = Vector2(-1, 12)
-script = SubResource("GDScript_emkrx")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
