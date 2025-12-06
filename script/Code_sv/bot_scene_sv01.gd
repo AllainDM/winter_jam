@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 	# 	anim.flip_h = move_direction.x < 0
 
 
-func die():
+func die() -> bool:
 	print("who is die?")
 	can_move = false
 	velocity = Vector2.ZERO
@@ -131,6 +131,7 @@ func die():
 	remove_from_group("enemy")
 	add_to_group("dead_body")
 
+	return true
 	# # # Меняем спрайт
 	# if anim:
 	#     if anim.has_animation("dead"):
