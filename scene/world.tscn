@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://cujin7o3a8m8v"]
+
+[gd_scene load_steps=13 format=4 uid="uid://cujin7o3a8m8v"]
 
 [ext_resource type="Script" uid="uid://dxjj6d8f2c6x1" path="res://script/world.gd" id="1_pjass"]
-[ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://Assets/spritesheet.png" id="2_m5mgf"]
-[ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://Assets/Decoration/Log_Cabin.png" id="3_emkrx"]
-[ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://Assets/Decoration/Snowman_0.png" id="4_0tg4p"]
+[ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://TextureLevel/spritesheet.png" id="2_m5mgf"]
+[ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://TextureLevel/Decoration/Log_Cabin.png" id="3_emkrx"]
+[ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://TextureLevel/Decoration/Snowman_0.png" id="4_0tg4p"]
 [ext_resource type="Texture2D" uid="uid://c2ymiqinr0a0m" path="res://Assets/ded_moroz.png" id="5_emkrx"]
+[ext_resource type="PackedScene" uid="uid://b1maio5hqo01d" path="res://scene/bots.tscn" id="5_0tg4p"]
+[ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="6_hcb8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -816,6 +819,7 @@ position = Vector2(63.914074, 64.085815)
 tile_map_data = PackedByteArray("AAA+ACEAAAAQAAgAAAA+ACIAAAAQAAkAAAA/ACEAAAARAAgAAAA/ACIAAAARAAkAAAA5ACMAAAAQAAoAAAA5ACQAAAAQAAsAAAA6ACMAAAARAAoAAAA6ACQAAAARAAsAAAA3ABwAAAASAAgAAAA3AB0AAAASAAkAAAA4ABwAAAATAAgAAAA4AB0AAAATAAkAAABBAB8AAAASAAgAAABBACAAAAASAAkAAABCAB8AAAATAAgAAABCACAAAAATAAkAAAA=")
 tile_set = SubResource("TileSet_jsnws")
 
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-3.0517578e-05, 0.85876465)
 scale = Vector2(1.0000001, 0.99241203)
@@ -854,3 +858,4 @@ texture_filter = 1
 position = Vector2(590, 360)
 scale = Vector2(2.1000009, 1.8155096)
 texture = ExtResource("5_emkrx")
+

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://bh0ygqsaxecdt" path="res://script/bot_scene.gd" id="1_oms2k"]
 [ext_resource type="Texture2D" uid="uid://bl7lo3pum5tj1" path="res://player.png" id="1_opt03"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oms2k"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_s07rj"]
 atlas = ExtResource("1_opt03")
 region = Rect2(0, 0, 48, 48)
@@ -55,17 +53,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oms2k"]
+
 [node name="bots" type="CharacterBody2D"]
-position = Vector2(12, 16)
+position = Vector2(431, 367)
 script = ExtResource("1_oms2k")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_oms2k")
+position = Vector2(2, 0)
+
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_nq6sn")
 animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+position = Vector2(0, 1)
+
+shape = SubResource("CircleShape2D_oms2k")
