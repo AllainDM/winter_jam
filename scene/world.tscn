@@ -1,11 +1,17 @@
 [gd_scene load_steps=13 format=4 uid="uid://cujin7o3a8m8v"]
 
-[ext_resource type="Script" uid="uid://dxjj6d8f2c6x1" path="res://script/world.gd" id="1_pjass"]
 [ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://TextureLevel/spritesheet.png" id="2_m5mgf"]
 [ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://TextureLevel/Decoration/Log_Cabin.png" id="3_emkrx"]
 [ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://TextureLevel/Decoration/Snowman_0.png" id="4_0tg4p"]
 [ext_resource type="PackedScene" uid="uid://b1maio5hqo01d" path="res://scene/bots.tscn" id="5_0tg4p"]
 [ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="6_hcb8y"]
+
+[sub_resource type="GDScript" id="GDScript_emkrx"]
+script/source = "extends Node2D
+
+func _ready():
+  pass
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -782,7 +788,7 @@ sources/0 = SubResource("TileSetAtlasSource_na5tu")
 
 [node name="worldSA" type="Node2D"]
 position = Vector2(2, 0)
-script = ExtResource("1_pjass")
+script = SubResource("GDScript_emkrx")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -816,4 +822,11 @@ tile_set = SubResource("TileSet_jsnws")
 
 [node name="bots" parent="." instance=ExtResource("5_0tg4p")]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("6_hcb8y")]
+[node name="player_01" parent="." instance=ExtResource("6_hcb8y")]
+
+[node name="Camera2D" type="Camera2D" parent="player_01"]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 8
+limit_right = 1130
+limit_bottom = 648
