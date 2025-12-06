@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxf27hwfsmf5g"]
+[gd_scene load_steps=15 format=3 uid="uid://cxf27hwfsmf5g"]
 
 [ext_resource type="Texture2D" uid="uid://yj2jv8ih15fn" path="res://Artwork/player.png" id="1_7vojy"]
 [ext_resource type="Script" uid="uid://ycgmnxhv74b7" path="res://script/player_01.gd" id="1_gw85p"]
@@ -20,29 +20,9 @@ region = Rect2(96, 288, 48, 48)
 atlas = ExtResource("1_7vojy")
 region = Rect2(144, 288, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7vojy"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aspj3"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ra5wm"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dohga"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i35yj"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_raje5"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(240, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6gmu"]
+atlas = ExtResource("3_ut5ij")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwvpq"]
 atlas = ExtResource("3_ut5ij")
@@ -77,22 +57,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7vojy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aspj3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ra5wm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dohga")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i35yj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_raje5")
+"texture": SubResource("AtlasTexture_x6gmu")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -125,7 +90,7 @@ script = ExtResource("1_gw85p")
 texture_filter = 1
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_aspj3")
-animation = &"walk_down"
+animation = &"attack_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
