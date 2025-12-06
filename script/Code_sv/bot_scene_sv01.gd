@@ -21,9 +21,6 @@ var wander_interval: float = randf_range(1.0, 4.0)  # Интервал сраз�
 
 func _ready():	
 	add_to_group("enemy")
-	# Устанавливаем начальную цель в координаты (500, 500)
-	# target_position = Vector2(500, 500)
-
 	# Инициализируем случайную позицию для блуждания
 	target_position = get_random_wander_target()
 
@@ -31,8 +28,6 @@ func _ready():
 	# # Смерть через 3 секунды для теста
 	# await get_tree().create_timer(3.0).timeout
 	# die()
-
-
 
 # Функция для расчета рандомной позиции
 func get_random_wander_target() -> Vector2:
@@ -50,19 +45,16 @@ func get_random_wander_target() -> Vector2:
 	return start_position + offset
 
 
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			set_target_to_mouse_click()
 
 
-
 func set_target_to_mouse_click() -> void:
 	# Получаем позицию мыши в глобальных координатах мира
 	target_position = get_global_mouse_position()
 	# print("Новая цель установлена: ", target_position)
-
 
 
 func _physics_process(delta: float) -> void:
@@ -79,7 +71,6 @@ func _physics_process(delta: float) -> void:
 		target_position = get_random_wander_target()
 		wander_timer = 0.0  # Сбрасываем таймер
 		# print("Цель достигнута, новая цель: ", target_position)
-
 
 	# ДОБАВИТЬ обновление таймера и смену цели
 	wander_timer += delta
