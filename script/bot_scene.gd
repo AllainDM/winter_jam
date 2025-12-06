@@ -27,6 +27,11 @@ func _ready():
 	# Инициализируем случайную позицию для блуждания
 	target_position = get_random_wander_target()
 
+	# Тест смерти бота
+	# Смерть через 3 секунды для теста
+	# await get_tree().create_timer(3.0).timeout
+	# die()
+
 
 
 # Функция для расчета рандомной позиции
@@ -112,6 +117,11 @@ func _physics_process(delta: float) -> void:
 
 func die():
 	print("who is die?")
+	can_move = false
+	velocity = Vector2.ZERO
+	# Останавливаем все таймеры или процессы, если они есть
+	set_physics_process(false)
+	print("Бот умер (заморожен)")
 	
 
 	# if target and target.name == "player":
