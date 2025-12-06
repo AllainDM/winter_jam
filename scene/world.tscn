@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://cujin7o3a8m8v"]
+[gd_scene load_steps=13 format=4 uid="uid://cujin7o3a8m8v"]
 
-
-[ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://TextureLevel/spritesheet.png" id="2_m5mgf"]
-[ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://TextureLevel/Decoration/Log_Cabin.png" id="3_emkrx"]
-[ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://TextureLevel/Decoration/Snowman_0.png" id="4_0tg4p"]
+[ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://Assets/spritesheet.png" id="2_m5mgf"]
+[ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://Assets/Decoration/Log_Cabin.png" id="3_emkrx"]
+[ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://Assets/Decoration/Snowman_0.png" id="4_0tg4p"]
 [ext_resource type="Texture2D" uid="uid://c2ymiqinr0a0m" path="res://Assets/ded_moroz.png" id="5_emkrx"]
-[ext_resource type="PackedScene" uid="uid://b1maio5hqo01d" path="res://scene/bots.tscn" id="5_0tg4p"]
 [ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="6_hcb8y"]
-
 
 [sub_resource type="GDScript" id="GDScript_emkrx"]
 script/source = "extends Node2D
@@ -790,10 +787,8 @@ texture = ExtResource("2_m5mgf")
 sources/0 = SubResource("TileSetAtlasSource_na5tu")
 
 [node name="worldSA" type="Node2D"]
-
-position = Vector2(2, 0)
+position = Vector2(1, 7)
 script = SubResource("GDScript_emkrx")
-
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -842,16 +837,6 @@ polygon = PackedVector2Array(0, 0, 151.99985, 0.20393372, 151.95692, 32.203903, 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(863.3552, 481.15878, 831.3552, 481.11588, 831.22644, 577.1157, 895.2264, 577.20166, 895.1835, 609.20166, 1023.18335, 609.3734, 1023.22626, 577.3734, 1055.2263, 577.41626, 1055.2692, 545.4164, 1087.269, 545.4592, 1087.355, 481.45932, 1055.355, 481.4164, 1055.4087, 441.4164, 1023.40875, 441.3735, 1023.4409, 417.3735, 991.441, 417.3306, 991.3981, 449.33054, 863.3982, 449.15878)
 
-
-[node name="player_01" parent="." instance=ExtResource("6_hcb8y")]
-
-[node name="Camera2D" type="Camera2D" parent="player_01"]
-zoom = Vector2(1.5, 1.5)
-limit_left = 0
-limit_top = 8
-limit_right = 1130
-limit_bottom = 648
-
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(167.82811, 128.22528)
 scale = Vector2(0.84147334, 0.7892577)
@@ -868,10 +853,17 @@ polygon = PackedVector2Array(503.52728, 352.6759, 671.53784, 344.9013, 631.69885
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(871.9992, 1.1699448, 863.96704, 25.159195, 871.9241, 57.16989, 903.9133, 65.21283, 903.8811, 89.2128, 935.88104, 89.25574, 935.83813, 121.25571, 951.83813, 121.27716, 951.88104, 89.27719, 967.88104, 89.29866, 991.88104, 89.33087, 999.83813, 121.34157, 1063.8381, 121.42743, 1063.7952, 153.4274, 1079.795, 153.44887, 1079.795, 153.44887, 1095.7522, 185.47034, 1151.7521, 185.54547, 1151.999, 1.5456161)
 
+[node name="player_01" parent="." instance=ExtResource("6_hcb8y")]
+
+[node name="Camera2D" type="Camera2D" parent="player_01"]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 8
+limit_right = 1130
+limit_bottom = 648
 
 [node name="DedMoroz" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(590, 360)
 scale = Vector2(2.1000009, 1.8155096)
 texture = ExtResource("5_emkrx")
-
