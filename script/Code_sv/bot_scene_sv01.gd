@@ -61,7 +61,7 @@ func _input(event: InputEvent) -> void:
 func set_target_to_mouse_click() -> void:
 	# Получаем позицию мыши в глобальных координатах мира
 	target_position = get_global_mouse_position()
-	print("Новая цель установлена: ", target_position)
+	# print("Новая цель установлена: ", target_position)
 
 
 
@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		# Получаем новую случайную цель
 		target_position = get_random_wander_target()
 		wander_timer = 0.0  # Сбрасываем таймер
-		print("Цель достигнута, новая цель: ", target_position)
+		# print("Цель достигнута, новая цель: ", target_position)
 
 
 	# ДОБАВИТЬ обновление таймера и смену цели
@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	if wander_timer >= wander_interval:
 		target_position = get_random_wander_target()
 		wander_timer = 0.0
-		print("Случайная цель: ", target_position)
+		# print("Случайная цель: ", target_position)
 
 	# Двигаемся к цели (target_position)
 	if target_position:
@@ -101,7 +101,7 @@ func _physics_process(delta: float) -> void:
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
 			
-			print("Столкнулся с: ", collider.name)
+			# print("Столкнулся с: ", collider.name)
 			
 			# Если уперлись в стену, меняем направление
 			# if collider is TileMap or collider.name.contains("Wall"):
@@ -124,11 +124,14 @@ func die():
 	print("Бот умер (заморожен)")
 	
 	# Отключаем коллайдер
-	var collision_shape = $CollisionShape2D  # или другой нод с коллайдером
-	if collision_shape:
-		collision_shape.set_deferred("disabled", true)
+	# var collision_shape = $CollisionShape2D  # или другой нод с коллайдером
+	# if collision_shape:
+	# 	collision_shape.set_deferred("disabled", true)
 
-	# # Меняем спрайт
+	remove_from_group("enemy")
+	add_to_group("dead_body")
+
+	# # # Меняем спрайт
 	# if anim:
 	#     if anim.has_animation("dead"):
 	#         anim.play("dead")
