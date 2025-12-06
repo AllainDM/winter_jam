@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cxf27hwfsmf5g"]
+[gd_scene load_steps=20 format=3 uid="uid://cxf27hwfsmf5g"]
 
 [ext_resource type="Texture2D" uid="uid://yj2jv8ih15fn" path="res://Artwork/player.png" id="1_7vojy"]
 [ext_resource type="Script" uid="uid://ycgmnxhv74b7" path="res://script/player_01.gd" id="1_gw85p"]
+[ext_resource type="Texture2D" uid="uid://dgt5hn2gt5kce" path="res://Artwork/ded_moroz_anim2.png" id="3_ut5ij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw85p"]
 atlas = ExtResource("1_7vojy")
@@ -44,28 +45,16 @@ atlas = ExtResource("1_7vojy")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwvpq"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(0, 144, 48, 48)
+atlas = ExtResource("3_ut5ij")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqqkd"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(48, 144, 48, 48)
+atlas = ExtResource("3_ut5ij")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8npxw"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(96, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6gmu"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(144, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iocw2"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(192, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ql2r"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(240, 144, 48, 48)
+atlas = ExtResource("3_ut5ij")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aspj3"]
 animations = [{
@@ -82,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_58s3r")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_down",
 "speed": 5.0
 }, {
@@ -118,17 +107,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8npxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x6gmu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iocw2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ql2r")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_down",
 "speed": 5.0
 }]
@@ -137,7 +117,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gw85p"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player_01" type="CharacterBody2D"]
 position = Vector2(210, 121)
 script = ExtResource("1_gw85p")
 
@@ -145,7 +125,7 @@ script = ExtResource("1_gw85p")
 texture_filter = 1
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_aspj3")
-animation = &"attack_down"
+animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
