@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxf27hwfsmf5g"]
+[gd_scene load_steps=22 format=3 uid="uid://cxf27hwfsmf5g"]
 
 [ext_resource type="Texture2D" uid="uid://yj2jv8ih15fn" path="res://Artwork/player.png" id="1_7vojy"]
 [ext_resource type="Script" uid="uid://ycgmnxhv74b7" path="res://script/player_01.gd" id="1_gw85p"]
@@ -135,15 +135,27 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pot2d"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gw85p"]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(210, 121)
 script = ExtResource("1_gw85p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_aspj3")
-animation = &"idle_down"
+animation = &"attack_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_pot2d")
+
+[node name="hit-box_Area2D" type="Area2D" parent="."]
+position = Vector2(0, -15)
+scale = Vector2(2.52, 2.52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit-box_Area2D"]
+shape = SubResource("CircleShape2D_gw85p")
+
+[connection signal="body_entered" from="hit-box_Area2D" to="." method="_on_hitbox_area_2d_body_entered"]
