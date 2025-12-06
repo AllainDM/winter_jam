@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	
 	if move_direction.length() > 0:
 		velocity = move_direction * speed
-		var collisions = move_and_slide()
+		move_and_slide()
 		
 		# Проверяем все коллизии на текущем кадре
 		for i in get_slide_collision_count():
@@ -127,7 +127,6 @@ func die():
 	var collision_shape = $CollisionShape2D  # или другой нод с коллайдером
 	if collision_shape:
 		collision_shape.set_deferred("disabled", true)
-
 
 	# # Меняем спрайт
 	# if anim:
