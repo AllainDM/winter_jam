@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjcifwiu4gd0i"]
+
+[ext_resource type="Texture2D" uid="uid://b3wfa1406y7v" path="res://Assets/UiAssets/christmasfree.png" id="1_06cny"]
+[ext_resource type="Script" uid="uid://dsqwvoq6ml5xx" path="res://scene/Ui/pauseMenu.gd" id="1_vqva3"]
+[ext_resource type="Script" uid="uid://dvipotbmx6x07" path="res://scene/Ui/resumeButon.gd" id="3_7ciwc"]
+[ext_resource type="Script" uid="uid://dicl84t1tlox0" path="res://scene/Ui/buttonExitMainMenu.gd" id="4_qd0ei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ciwc"]
+atlas = ExtResource("1_06cny")
+region = Rect2(67, 5, 89, 118)
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_vqva3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -59.0
+offset_right = 45.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_7ciwc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.5
+offset_top = 22.0
+offset_right = -4.5
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/TextureRect/VBoxContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume
+"
+script = ExtResource("3_7ciwc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="PanelContainer/TextureRect/VBoxContainer/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+text = "Exit"
+script = ExtResource("4_qd0ei")
+
+[connection signal="pressed" from="PanelContainer/TextureRect/VBoxContainer/MarginContainer/ResumeButton" to="PanelContainer/TextureRect/VBoxContainer/MarginContainer/ResumeButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/TextureRect/VBoxContainer/MarginContainer2/ExitButton" to="PanelContainer/TextureRect/VBoxContainer/MarginContainer2/ExitButton" method="_on_pressed"]
