@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b63qoltiquprq"]
+[gd_scene load_steps=6 format=3 uid="uid://b63qoltiquprq"]
 
-[ext_resource type="Texture2D" uid="uid://b3wfa1406y7v" path="res://Assets/Ui/christmasfree.png" id="1_mvbu5"]
+[ext_resource type="Texture2D" uid="uid://b3wfa1406y7v" path="res://Assets/UiAssets/christmasfree.png" id="1_mvbu5"]
+[ext_resource type="Script" uid="uid://do24qb3wegr7k" path="res://script/buttonStart.gd" id="2_orkwj"]
+[ext_resource type="Script" uid="uid://4iaon3aneog5" path="res://scene/Ui/button_exit.gd" id="3_7mls4"]
+[ext_resource type="AudioStream" uid="uid://borms1i8q6kjd" path="res://Assets/MusicSound/Music/chill.ogg" id="4_icaki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_orkwj"]
 atlas = ExtResource("1_mvbu5")
@@ -23,14 +26,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.5
+offset_left = -44.0
 offset_top = -59.0
-offset_right = 44.5
+offset_right = 45.0
 offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control/PanelContainer"]
+texture_filter = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_orkwj")
 
@@ -50,13 +54,27 @@ theme_override_constants/separation = 9
 [node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer"]
+[node name="startButton" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer"]
+texture_filter = 1
 layout_mode = 2
 text = "Start"
+script = ExtResource("2_orkwj")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2"]
+[node name="buttonExit" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2"]
+texture_filter = 1
 layout_mode = 2
-text = "Start"
+text = "Exit"
+script = ExtResource("3_7mls4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_icaki")
+volume_db = 4.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[connection signal="pressed" from="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer/startButton" to="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer/startButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2/buttonExit" to="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2/buttonExit" method="_on_pressed"]

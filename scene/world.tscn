@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3m5udbjvvxw0"]
+[gd_scene load_steps=14 format=4 uid="uid://d3m5udbjvvxw0"]
 
 [ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://Assets/Environment/spritesheet.png" id="2_m5mgf"]
 [ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://Assets/Environment/Decoration/Log_Cabin.png" id="3_emkrx"]
 [ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://Assets/Environment/Decoration/Snowman_0.png" id="4_0tg4p"]
+[ext_resource type="AudioStream" uid="uid://cko4xruqwflm5" path="res://Assets/MusicSound/Music/frostbite.ogg" id="6_0tg4p"]
 [ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="6_hcb8y"]
+[ext_resource type="PackedScene" uid="uid://cjcifwiu4gd0i" path="res://scene/Ui/PauseMenu.tscn" id="6_y3jn2"]
+[ext_resource type="Script" uid="uid://dsqwvoq6ml5xx" path="res://scene/Ui/pauseMenu.gd" id="7_hcb8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -810,7 +813,7 @@ rotation = 0.0013416852
 texture = ExtResource("4_0tg4p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="StaticBody2D/Envirement"]
-position = Vector2(63.914074, 64.085815)
+position = Vector2(-11.012066, 8.985237)
 tile_map_data = PackedByteArray("AAA+ACEAAAAQAAgAAAA+ACIAAAAQAAkAAAA/ACEAAAARAAgAAAA/ACIAAAARAAkAAAA5ACMAAAAQAAoAAAA5ACQAAAAQAAsAAAA6ACMAAAARAAoAAAA6ACQAAAARAAsAAAA3ABwAAAASAAgAAAA3AB0AAAASAAkAAAA4ABwAAAATAAgAAAA4AB0AAAATAAkAAABBAB8AAAASAAgAAABBACAAAAASAAkAAABCAB8AAAATAAgAAABCACAAAAATAAkAAAA=")
 tile_set = SubResource("TileSet_jsnws")
 
@@ -824,9 +827,6 @@ polygon = PackedVector2Array(7.3237762, 504.01028, 23.323761, 504.0317, 39.29155
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 0, 151.99985, 0.20393372, 151.95692, 32.203903, 127.95694, 32.171707, 127.92474, 56.171677, 95.91404, 64.12875, 95.75304, 184.12863, 63.753067, 184.0857, 63.83893, 120.085754, 31.838959, 120.042816, 23.785294, 160.03206, -0.2146759, 159.99985, -0.021469116, 15.999985, -0.021469116, 15.999985)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(863.3552, 481.15878, 831.3552, 481.11588, 831.22644, 577.1157, 895.2264, 577.20166, 895.1835, 609.20166, 1023.18335, 609.3734, 1023.22626, 577.3734, 1055.2263, 577.41626, 1055.2692, 545.4164, 1087.269, 545.4592, 1087.355, 481.45932, 1055.355, 481.4164, 1055.4087, 441.4164, 1023.40875, 441.3735, 1023.4409, 417.3735, 991.441, 417.3306, 991.3981, 449.33054, 863.3982, 449.15878)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(167.82811, 128.22528)
@@ -844,5 +844,22 @@ polygon = PackedVector2Array(503.52728, 352.6759, 671.53784, 344.9013, 631.69885
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(871.9992, 1.1699448, 863.96704, 25.159195, 871.9241, 57.16989, 903.9133, 65.21283, 903.8811, 89.2128, 935.88104, 89.25574, 935.83813, 121.25571, 951.83813, 121.27716, 951.88104, 89.27719, 967.88104, 89.29866, 991.88104, 89.33087, 999.83813, 121.34157, 1063.8381, 121.42743, 1063.7952, 153.4274, 1079.795, 153.44887, 1079.795, 153.44887, 1095.7522, 185.47034, 1151.7521, 185.54547, 1151.999, 1.5456161)
 
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(984.241, 566.32104, 983.27594, 540.31976, 1010.2773, 539.35596, 1010.2424, 565.3559)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-76.036156, 26.898006)
+polygon = PackedVector2Array(984.241, 566.32104, 985.2626, 550.3224, 1000.2612, 551.3425, 1001.2411, 566.3439)
+
 [node name="player_01" parent="." instance=ExtResource("6_hcb8y")]
 position = Vector2(558, 404)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0tg4p")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_y3jn2")]
+visible = false
+script = ExtResource("7_hcb8y")
