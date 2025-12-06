@@ -28,7 +28,6 @@ func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 		body.die()
 		is_attacking = true
 		anim.play("attack_down")
-		var animation_duration = anim.current_animation_length
-		await get_tree().create_timer(animation_duration).timeout
+		await get_tree().create_timer(2.0).timeout
 		is_attacking = false
 	pass
