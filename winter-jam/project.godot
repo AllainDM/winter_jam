@@ -10,7 +10,6 @@ config_version=5
 
 [application]
 
-config/name="winter_jam"
-run/main_scene="uid://cujin7o3a8m8v"
+config/name="WinterJam"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
