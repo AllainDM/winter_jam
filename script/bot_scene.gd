@@ -49,17 +49,10 @@ func _physics_process(_delta: float) -> void:
 		anim.flip_h = move_direction.x < 0
 
 
-	# ВРЕМЕННО: всегда двигаться вправо для теста
-	# move_direction = Vector2.RIGHT
-	
-	# if move_direction.length() > 0:
-	# 	velocity = move_direction * speed
-	# 	move_and_slide()
-	# 	anim.flip_h = move_direction.x < 0
-
 
 func die():
-	pass
+	print("who is die?")
+	
 
 	# if target and target.name == "player":
 	# 	move_direction = (target.position - position).normalized()
