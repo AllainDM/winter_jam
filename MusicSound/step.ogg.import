@@ -2,7 +2,9 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dakuu8pq18tl6"
+
+uid="uid://bgddb66s35v2g"
+
 path="res://.godot/imported/step.ogg-37460b8d29929758e9e0b79c1f8b3599.oggvorbisstr"
 
 [deps]
