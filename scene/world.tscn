@@ -1,10 +1,10 @@
-
-[gd_scene load_steps=11 format=4 uid="uid://cujin7o3a8m8v"]
+[gd_scene load_steps=12 format=4 uid="uid://cujin7o3a8m8v"]
 
 [ext_resource type="Script" uid="uid://dxjj6d8f2c6x1" path="res://script/world.gd" id="1_pjass"]
-[ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://TextureLevel/spritesheet.png" id="2_m5mgf"]
-[ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://TextureLevel/Decoration/Log_Cabin.png" id="3_emkrx"]
-[ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://TextureLevel/Decoration/Snowman_0.png" id="4_0tg4p"]
+[ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://Assets/spritesheet.png" id="2_m5mgf"]
+[ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://Assets/Decoration/Log_Cabin.png" id="3_emkrx"]
+[ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://Assets/Decoration/Snowman_0.png" id="4_0tg4p"]
+[ext_resource type="Texture2D" uid="uid://c2ymiqinr0a0m" path="res://Assets/ded_moroz.png" id="5_emkrx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -779,11 +779,9 @@ texture = ExtResource("2_m5mgf")
 [sub_resource type="TileSet" id="TileSet_jsnws"]
 sources/0 = SubResource("TileSetAtlasSource_na5tu")
 
-
 [node name="worldSA" type="Node2D"]
-position = Vector2(2, 0)
+position = Vector2(-192, 88)
 script = ExtResource("1_pjass")
-
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -815,3 +813,11 @@ texture = ExtResource("4_0tg4p")
 tile_map_data = PackedByteArray("AAA+ACEAAAAQAAgAAAA+ACIAAAAQAAkAAAA/ACEAAAARAAgAAAA/ACIAAAARAAkAAAA5ACMAAAAQAAoAAAA5ACQAAAAQAAsAAAA6ACMAAAARAAoAAAA6ACQAAAARAAsAAAA3ABwAAAASAAgAAAA3AB0AAAASAAkAAAA4ABwAAAATAAgAAAA4AB0AAAATAAkAAABBAB8AAAASAAgAAABBACAAAAASAAkAAABCAB8AAAATAAgAAABCACAAAAATAAkAAAA=")
 tile_set = SubResource("TileSet_jsnws")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(550, 344)
+
+[node name="DedMoroz" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(590, 360)
+scale = Vector2(2.1000009, 1.8155096)
+texture = ExtResource("5_emkrx")
