@@ -25,6 +25,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
+		print("player toches enemy")
 		body.die()
 		is_attacking = true
 		anim.play("attack_down")
