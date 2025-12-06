@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cujin7o3a8m8v"]
+[gd_scene load_steps=3 format=3 uid="uid://cujin7o3a8m8v"]
 
 [ext_resource type="Script" uid="uid://dxjj6d8f2c6x1" path="res://script/world.gd" id="1_pjass"]
+[ext_resource type="PackedScene" uid="uid://b1maio5hqo01d" path="res://scene/bots.tscn" id="2_txmk2"]
 
-[node name="world" type="Node2D"]
+[node name="worldSA" type="Node2D"]
+position = Vector2(2, 0)
 script = ExtResource("1_pjass")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 324)
+
+[node name="bots" parent="." instance=ExtResource("2_txmk2")]
+position = Vector2(139, 110)
