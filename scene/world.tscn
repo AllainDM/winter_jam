@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bxr3003ps6xov" path="res://Assets/Environment/spritesheet.png" id="2_m5mgf"]
 [ext_resource type="Texture2D" uid="uid://b74gdtm74ccct" path="res://Assets/Environment/Decoration/Log_Cabin.png" id="3_emkrx"]
 [ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://Assets/Environment/Decoration/Snowman_0.png" id="4_0tg4p"]
-[ext_resource type="Texture2D" uid="uid://c2ymiqinr0a0m" path="res://Assets/ded_moroz.png" id="5_emkrx"]
+[ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="6_hcb8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -844,12 +844,5 @@ polygon = PackedVector2Array(503.52728, 352.6759, 671.53784, 344.9013, 631.69885
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(871.9992, 1.1699448, 863.96704, 25.159195, 871.9241, 57.16989, 903.9133, 65.21283, 903.8811, 89.2128, 935.88104, 89.25574, 935.83813, 121.25571, 951.83813, 121.27716, 951.88104, 89.27719, 967.88104, 89.29866, 991.88104, 89.33087, 999.83813, 121.34157, 1063.8381, 121.42743, 1063.7952, 153.4274, 1079.795, 153.44887, 1079.795, 153.44887, 1095.7522, 185.47034, 1151.7521, 185.54547, 1151.999, 1.5456161)
 
-[node name="Player" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(590, 360)
-scale = Vector2(2.1000009, 1.8155096)
-texture = ExtResource("5_emkrx")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-19.047607, -8.812958)
-scale = Vector2(0.47619027, 0.55080956)
+[node name="player_01" parent="." instance=ExtResource("6_hcb8y")]
+position = Vector2(558, 404)
