@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var start_position: Vector2 = position
-var speed: int = 50
+var speed: int = 100
 var target: CharacterBody2D = null
 var can_move: bool = true
 
@@ -12,10 +12,37 @@ var health: int = startHealth
 var target_position: Vector2 = Vector2.ZERO
 
 
+# 
+var wander_radius: float = 150.0  # Радиус блуждания
+var wander_timer: float = 0.0     # Таймер для смены цели
+# var wander_interval: float = 2.0  # Интервал смены цели (в секундах)
+var wander_interval: float = randf_range(1.0, 4.0)  # Интервал сразу рандомный
+
+
 func _ready():	
 	add_to_group("enemy")
 	# Устанавливаем начальную цель в координаты (500, 500)
-	target_position = Vector2(500, 500)
+	# target_position = Vector2(500, 500)
+
+	# Инициализируем случайную позицию для блуждания
+	target_position = get_random_wander_target()
+
+
+
+# Функция для расчета рандомной позиции
+func get_random_wander_target() -> Vector2:
+	# Генерируем случайную точку в круге радиусом wander_radius
+	var random_angle = randf_range(0, TAU)  # TAU = 2 * PI
+	var random_distance = randf_range(0, wander_radius)
+	
+	# Вычисляем смещение от стартовой позиции
+	var offset = Vector2(
+		cos(random_angle) * random_distance,
+		sin(random_angle) * random_distance
+	)
+	
+	# Возвращаем конечную позицию
+	return start_position + offset
 
 
 
@@ -25,19 +52,36 @@ func _input(event: InputEvent) -> void:
 			set_target_to_mouse_click()
 
 
+
 func set_target_to_mouse_click() -> void:
 	# Получаем позицию мыши в глобальных координатах мира
 	target_position = get_global_mouse_position()
 	print("Новая цель установлена: ", target_position)
 
 
-func _physics_process(_delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
 	if !can_move:		
 		print("Не можем двигаться")
 		return
 
 	var move_direction = Vector2.ZERO
 
+	# ДОБАВЛЯЕМ ПРОВЕРКУ ДОСТИЖЕНИЯ ЦЕЛИ
+	var distance_to_target = position.distance_to(target_position)
+	if distance_to_target < 5.0:  # Если близко к цели (5 пикселей)
+		# Получаем новую случайную цель
+		target_position = get_random_wander_target()
+		wander_timer = 0.0  # Сбрасываем таймер
+		print("Цель достигнута, новая цель: ", target_position)
+
+
+	# ДОБАВИТЬ обновление таймера и смену цели
+	wander_timer += delta
+	if wander_timer >= wander_interval:
+		target_position = get_random_wander_target()
+		wander_timer = 0.0
+		print("Случайная цель: ", target_position)
 
 	# Двигаемся к цели (target_position)
 	if target_position:
@@ -45,9 +89,25 @@ func _physics_process(_delta: float) -> void:
 	
 	if move_direction.length() > 0:
 		velocity = move_direction * speed
-		move_and_slide()
-		anim.flip_h = move_direction.x < 0
-
+		var collisions = move_and_slide()
+		
+		# Проверяем все коллизии на текущем кадре
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			
+			print("Столкнулся с: ", collider.name)
+			
+			# Если уперлись в стену, меняем направление
+			# if collider is TileMap or collider.name.contains("Wall"):
+			target_position = get_random_wander_target()
+			wander_timer = 0.0
+			break
+				
+	# if move_direction.length() > 0:
+	# 	velocity = move_direction * speed
+	# 	move_and_slide()
+	# 	anim.flip_h = move_direction.x < 0
 
 
 func die():
