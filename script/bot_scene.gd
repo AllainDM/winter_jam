@@ -28,7 +28,7 @@ func _ready():
 	target_position = get_random_wander_target()
 
 	# Тест смерти бота
-	# Смерть через 3 секунды для теста
+	# # Смерть через 3 секунды для теста
 	# await get_tree().create_timer(3.0).timeout
 	# die()
 
@@ -123,21 +123,15 @@ func die():
 	set_physics_process(false)
 	print("Бот умер (заморожен)")
 	
+	# Отключаем коллайдер
+	var collision_shape = $CollisionShape2D  # или другой нод с коллайдером
+	if collision_shape:
+		collision_shape.disabled = true
 
-	# if target and target.name == "player":
-	# 	move_direction = (target.position - position).normalized()
-	# elif position.distance_to(start_position) > 5.0:
-	# 	move_direction = (start_position - position).normalized()
-  
-	# if move_direction.length() > 0:
-	# 	velocity = move_direction * speed
-	# 	move_and_slide()
-	# 	# anim.play("Walk")
-	# 	anim.flip_h = move_direction.x < 0
-	# else:
-	# 	velocity = Vector2.ZERO
-	# 	# anim.play("Idle")
 
-# # Функция для установки цели
-# func set_target(new_target: Vector2) -> void:
-#   target = new_target
+	# # Меняем спрайт
+	# if anim:
+	#     if anim.has_animation("dead"):
+	#         anim.play("dead")
+	#     else:
+	#         anim.visible = false
