@@ -1,13 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://de23dvn0084yt"]
+[gd_scene load_steps=3 format=3 uid="uid://de23dvn0084yt"]
 
 [ext_resource type="PackedScene" uid="uid://b1maio5hqo01d" path="res://scene/bots.tscn" id="1_vn5jk"]
+[ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="2_xuj8c"]
 
 [node name="SA_test_scene" type="Node2D"]
 
 [node name="bots" parent="." instance=ExtResource("1_vn5jk")]
+position = Vector2(548, 391)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(288, 14)
 polygon = PackedVector2Array(-134, 339, 683, 308, 547, 210, -151, 279)
+
+[node name="player_01" parent="." instance=ExtResource("2_xuj8c")]
+position = Vector2(430, 420)
+
+[node name="bots2" parent="." instance=ExtResource("1_vn5jk")]
+position = Vector2(555, 407)
