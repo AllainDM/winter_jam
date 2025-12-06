@@ -2,7 +2,9 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dphls06k5w7o7"
+
+uid="uid://c4lcvtk1dvuuy"
+
 path="res://.godot/imported/freeze.ogg-c6a82c6b8a1c4cf3b181eb54f8b0dd54.oggvorbisstr"
 
 [deps]
