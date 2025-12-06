@@ -13,3 +13,4 @@ script = ExtResource("1_pjass")
 position = Vector2(574, 324)
 
 [node name="bots" parent="." instance=ExtResource("2_txmk2")]
+position = Vector2(139, 110)
