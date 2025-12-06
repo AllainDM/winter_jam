@@ -12,15 +12,14 @@ func _physics_process(_delta: float) -> void:
 	input_vector = input_vector.normalized()
 
 	if is_attacking:
-		input_vector = Vector2.ZERO
+		pass
 	elif input_vector != Vector2.ZERO:
 		anim.play("walk_down")
 		velocity = input_vector * SPEED
+	elif input_vector == Vector2.ZERO and velocity == Vector2.ZERO:
+		anim.play("idle_down")
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
-		
-	if velocity == Vector2.ZERO:
-		anim.play("idle_down")
 	move_and_slide()
 
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
@@ -29,6 +28,7 @@ func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 		body.die()
 		is_attacking = true
 		anim.play("attack_down")
-		await anim.animation_finished
+		var animation_duration = anim.current_animation_length
+		await get_tree().create_timer(animation_duration).timeout
 		is_attacking = false
 	pass
