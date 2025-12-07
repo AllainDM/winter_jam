@@ -26,6 +26,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.99702865, 1)
+size_flags_vertical = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -34,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -59.0
-offset_right = 45.0
-offset_bottom = 59.0
+offset_left = -101.0
+offset_top = -99.0
+offset_right = 53.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -57,7 +59,7 @@ offset_right = -4.5
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 9
+theme_override_constants/separation = 15
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -65,15 +67,10 @@ layout_mode = 2
 [node name="startButton" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer"]
 texture_filter = 1
 layout_mode = 2
+theme_type_variation = &"FlatButton"
 text = "Start"
 script = ExtResource("2_orkwj")
 startLevel = "res://scene/sv_scenes_01/lvl_sv_02.tscn"
-
-[node name="Sprite0002" type="Sprite2D" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer"]
-texture_filter = 3
-position = Vector2(35.500008, -130.99997)
-scale = Vector2(1.2428571, 1.2428571)
-texture = ExtResource("3_g8bok")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -81,8 +78,39 @@ layout_mode = 2
 [node name="buttonExit" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2"]
 texture_filter = 1
 layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Level"
+script = ExtResource("3_7mls4")
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="buttonExit" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer4"]
+texture_filter = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Option
+"
+script = ExtResource("3_7mls4")
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="buttonExit" type="Button" parent="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
 text = "Exit"
 script = ExtResource("3_7mls4")
+
+[node name="Sprite0002" type="Sprite2D" parent="Control"]
+texture_filter = 3
+position = Vector2(565, 100)
+scale = Vector2(1.2428571, 1.2428571)
+texture = ExtResource("3_g8bok")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_icaki")
@@ -93,3 +121,5 @@ parameters/looping = true
 
 [connection signal="pressed" from="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer/startButton" to="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer/startButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2/buttonExit" to="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer2/buttonExit" method="_on_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer4/buttonExit" to="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer4/buttonExit" method="_on_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer3/buttonExit" to="Control/PanelContainer/TextureRect/VBoxContainer/MarginContainer3/buttonExit" method="_on_pressed"]
