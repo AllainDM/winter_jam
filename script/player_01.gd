@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 const SPEED : float = 200.0
+
+
+
 var is_attacking : bool = false
 var attack_cooldown_time : float = 0.5
 var attack_cooldown : float = attack_cooldown_time
@@ -12,14 +14,17 @@ var found_gifts = 0
 
 # Необходимо найти подарков для победы.
 var need_gifts = 5
-
-@onready var hitSoundPlayer : AudioStreamPlayer2D = $"hit-box_Area2D/AudioStreamPlayer2D"
 var hit_tracks = [
 	"res://MusicSound/freeze.ogg"
 	]
+var lose_canvas : CanvasLayer 
+
+@onready var hitSoundPlayer : AudioStreamPlayer2D = $"hit-box_Area2D/AudioStreamPlayer2D"
+@onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	add_to_group("player")
+	lose_canvas = get_tree().get_first_node_in_group("LoseUI")
 
 func _physics_process(delta: float) -> void:
 	
@@ -45,7 +50,10 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 	move_and_slide()
 
+
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
+	# Проверяем метод у ноды
+
 	var enemy_is_die = false
 	if body.is_in_group("enemy"):
 		print("player toches enemy")
@@ -59,8 +67,11 @@ func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 		if enemy_is_die:
 			frozen_elves += 1
 			found_gifts += 1
+			
 			if found_gifts >= need_gifts:
-				victory()
+				lose_canvas.victory(need_gifts, found_gifts)
+				pass
+				
 	print("Заморожено эльфов: ", frozen_elves)
 	print("Найдено подарков: ", found_gifts)
 
@@ -68,7 +79,3 @@ func playFreezSound () -> void:
 	var random_track = load(hit_tracks[randi() % hit_tracks.size()])
 	hitSoundPlayer.stream = random_track
 	hitSoundPlayer.play()
-
-
-func victory():
-	print("Победа")
