@@ -15,7 +15,7 @@ var found_gifts = 0
 # Необходимо найти подарков для победы.
 var need_gifts = 5
 var hit_tracks = [
-	"res://MusicSound/freeze.ogg"
+	"res://Assets/MusicSound/freeze.ogg"
 	]
 var lose_canvas : CanvasLayer 
 
