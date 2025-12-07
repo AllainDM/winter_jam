@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://uepa10whinf2"]
+
+[ext_resource type="Script" uid="uid://bpsvqxp48kefd" path="res://timer.gd" id="1_qk0ax"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_qk0ax")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "test timer"
