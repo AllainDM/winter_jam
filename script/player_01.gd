@@ -18,6 +18,9 @@ var hit_tracks = [
 	"res://MusicSound/freeze.ogg"
 	]
 
+func _ready():
+	add_to_group("player")
+
 func _physics_process(delta: float) -> void:
 	
 	if attack_cooldown > 0:

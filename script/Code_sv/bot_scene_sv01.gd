@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 @onready var start_position: Vector2 = position
 var speed: int = 100
 var target: CharacterBody2D = null
@@ -21,17 +23,24 @@ var wander_interval: float = randf_range(1.0, 4.0)  # Интервал сраз�
 # АКТИВАЦИЯ
 var player: Node2D = null
 var is_active: bool = false
-@export var activation_distance: float = 500.0  # Радиус активации
+@export var activation_distance: float = 50.0  # Радиус активации
 
 
 func _ready():	
 	add_to_group("enemy")
 	# # Инициализируем случайную позицию для блуждания
-	target_position = get_random_wander_target()
+	# target_position = get_random_wander_target()
 
-	# player = get_tree().get_first_node_in_group("player")
-	# deactivate_bot()
-	# set_process(true)  # Включаем _process для проверки расстояния
+	# Находим игрока (должен быть в группе "player")
+	player = get_tree().get_first_node_in_group("player")
+	
+	# Делаем бота невидимым и неактивным
+	anim.visible = false
+	collision_shape.disabled = true
+	set_physics_process(false)
+	
+	# Запускаем проверку расстояния
+	set_process(true)
 
 	# Тест смерти бота
 	# # Смерть через 3 секунды для теста
@@ -65,6 +74,21 @@ func set_target_to_mouse_click() -> void:
 	# Получаем позицию мыши в глобальных координатах мира
 	target_position = get_global_mouse_position()
 	# print("Новая цель установлена: ", target_position)
+
+
+func _process(delta):
+	# Если бот еще не активен и игрок найден
+	if not is_active and player:
+		# Проверяем расстояние до игрока
+		if position.distance_to(player.position) < activation_distance:
+			# АКТИВИРУЕМСЯ
+			is_active = true
+			anim.visible = true
+			collision_shape.disabled = false
+			set_physics_process(true)
+			
+			# Начинаем движение
+			target_position = get_random_wander_target()
 
 
 func _physics_process(delta: float) -> void:
