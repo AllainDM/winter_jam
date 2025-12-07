@@ -12,9 +12,10 @@ var startHealth: int = 100
 var health: int = startHealth
 
 var target_position: Vector2 = Vector2.ZERO
+# Переменная для отслеживания первого движения
+var is_first_movement = true
 
 
-# 
 var wander_radius: float = 150.0  # Радиус блуждания
 var wander_timer: float = 0.0     # Таймер для смены цели
 # var wander_interval: float = 2.0  # Интервал смены цели (в секундах)
@@ -23,7 +24,7 @@ var wander_interval: float = randf_range(1.0, 4.0)  # Интервал сраз�
 # АКТИВАЦИЯ
 var player: Node2D = null
 var is_active: bool = false
-@export var activation_distance: float = 50.0  # Радиус активации
+@export var activation_distance: float = 100.0  # Радиус активации
 
 
 func _ready():	
@@ -35,7 +36,8 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	
 	# Делаем бота невидимым и неактивным
-	anim.visible = false
+	# anim.visible = false
+	anim.play("hide") 
 	collision_shape.disabled = true
 	set_physics_process(false)
 	
@@ -50,18 +52,36 @@ func _ready():
 
 # Функция для расчета рандомной позиции
 func get_random_wander_target() -> Vector2:
-	# Генерируем случайную точку в круге радиусом wander_radius
-	var random_angle = randf_range(0, TAU)  # TAU = 2 * PI
-	var random_distance = randf_range(0, wander_radius)
+	# # Генерируем случайную точку в круге радиусом wander_radius
+	# var random_angle = randf_range(0, TAU)  # TAU = 2 * PI
+	# var random_distance = randf_range(0, wander_radius)
 	
-	# Вычисляем смещение от стартовой позиции
-	var offset = Vector2(
-		cos(random_angle) * random_distance,
-		sin(random_angle) * random_distance
-	)
+	# # Вычисляем смещение от стартовой позиции
+	# var offset = Vector2(
+	# 	cos(random_angle) * random_distance,
+	# 	sin(random_angle) * random_distance
+	# )
 	
-	# Возвращаем конечную позицию
-	return start_position + offset
+	# # Возвращаем конечную позицию
+	# return start_position + offset
+	var target1: Vector2
+	
+	if is_first_movement and player:
+		# Первое движение - всегда от игрока
+		var direction_from_player = (position - player.position).normalized()
+		target1 = position + direction_from_player * wander_radius
+		is_first_movement = false
+	else:
+		# Последующие движения - рандомные
+		var random_angle = randf_range(0, TAU)
+		var random_distance = randf_range(0, wander_radius)
+		var offset = Vector2(
+			cos(random_angle) * random_distance,
+			sin(random_angle) * random_distance
+		)
+		target1 = start_position + offset
+	
+	return target1
 
 
 func _input(event: InputEvent) -> void:
@@ -82,6 +102,7 @@ func _process(delta):
 		# Проверяем расстояние до игрока
 		if position.distance_to(player.position) < activation_distance:
 			# АКТИВИРУЕМСЯ
+			anim.play("idle") 
 			is_active = true
 			anim.visible = true
 			collision_shape.disabled = false
@@ -148,15 +169,25 @@ func die() -> bool:
 	set_physics_process(false)
 	print("Бот умер (заморожен)")
 	
+	remove_from_group("enemy")
+	add_to_group("dead_body")
+
+	# Запускаем анимацию, но не ждем ее окончания
+	start_death_animation()
+	
+	return true
+	
+func start_death_animation():
+	anim.play("freez")
+	await anim.animation_finished
+	anim.play("icey")
+
 	# Отключаем коллайдер
 	# var collision_shape = $CollisionShape2D  # или другой нод с коллайдером
 	# if collision_shape:
 	# 	collision_shape.set_deferred("disabled", true)
 
-	remove_from_group("enemy")
-	add_to_group("dead_body")
 
-	return true
 	# # # Меняем спрайт
 	# if anim:
 	#     if anim.has_animation("dead"):
