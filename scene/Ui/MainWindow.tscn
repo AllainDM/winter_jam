@@ -109,7 +109,7 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 text = "Start"
 script = ExtResource("2_orkwj")
-startLevel = "res://scene/sv_scenes_01/lvl_sv_02.tscn"
+startLevel = "res://scene/Home.tscn"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/PanelContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -155,7 +155,6 @@ texture = ExtResource("3_g8bok")
 stream = ExtResource("4_icaki")
 volume_db = 4.0
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]

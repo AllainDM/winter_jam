@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://b4uq6hng2s27h"]
+[gd_scene load_steps=46 format=4 uid="uid://b4uq6hng2s27h"]
 
 [ext_resource type="Script" uid="uid://c1qom4dwavpvg" path="res://script/home.gd" id="1_l5gvf"]
 [ext_resource type="Texture2D" uid="uid://dpyanj6kijayc" path="res://Assets/Environment/Home/TopDownHouse_FloorsAndWalls.png" id="1_nh0ma"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bolqreyroxuxm" path="res://Assets/Environment/Home/TopDownHouse_FurnitureState2.png" id="4_kquoa"]
 [ext_resource type="Texture2D" uid="uid://dcavyldjwiplo" path="res://Assets/Environment/Home/TopDownHouse_SmallItems.png" id="5_73k4e"]
 [ext_resource type="Texture2D" uid="uid://btycryiuinf8m" path="res://Artwork/ded_moroz_anim6.png" id="6_ufhkq"]
+[ext_resource type="AudioStream" uid="uid://cwralrvgr07ne" path="res://Assets/MusicSound/enemy1.ogg" id="8_kquoa"]
+[ext_resource type="AudioStream" uid="uid://ylts8endvfch" path="res://Assets/MusicSound/enemy2.ogg" id="9_03j6s"]
+[ext_resource type="AudioStream" uid="uid://cd0i36mc2qxqm" path="res://Assets/MusicSound/enemy3.ogg" id="10_otlhm"]
+[ext_resource type="Texture2D" uid="uid://hvshggiys68m" path="res://Artwork/BROKEN_Windows_.png" id="11_otlhm"]
 
 [sub_resource type="Animation" id="Animation_kquoa"]
 length = 0.001
@@ -141,6 +145,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AnimatedSprite2D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_l5gvf"]
@@ -341,6 +357,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AnimatedSprite2D:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_73k4e"]
@@ -2027,6 +2055,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbmhp"]
+atlas = ExtResource("11_otlhm")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57mtm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbmhp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Home" type="Node2D"]
 script = ExtResource("1_l5gvf")
 
@@ -2077,6 +2120,9 @@ sprite_frames = SubResource("SpriteFrames_q3clp")
 animation = &"idle"
 autoplay = "walk"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Leprikon"]
+stream = ExtResource("8_kquoa")
+
 [node name="Leprikon2" type="Node2D" parent="."]
 position = Vector2(392, 309)
 
@@ -2085,6 +2131,11 @@ sprite_frames = SubResource("SpriteFrames_q3clp")
 animation = &"idle"
 autoplay = "walk"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Leprikon2"]
+position = Vector2(-13, 66)
+rotation = 0.2443461
+stream = ExtResource("9_03j6s")
+
 [node name="Leprikon3" type="Node2D" parent="."]
 position = Vector2(545, 374)
 
@@ -2092,3 +2143,13 @@ position = Vector2(545, 374)
 sprite_frames = SubResource("SpriteFrames_q3clp")
 animation = &"idle"
 autoplay = "walk"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Leprikon3"]
+position = Vector2(-166, 1)
+rotation = 0.2443461
+stream = ExtResource("10_otlhm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(576, 304)
+sprite_frames = SubResource("SpriteFrames_57mtm")

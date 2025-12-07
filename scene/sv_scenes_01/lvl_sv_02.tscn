@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ba7vggo65lgro" path="res://Assets/Environment/Decoration/Snowman_0.png" id="3_ksrr1"]
 [ext_resource type="PackedScene" uid="uid://cxf27hwfsmf5g" path="res://scene/player_01.tscn" id="4_i4g01"]
 [ext_resource type="PackedScene" uid="uid://068bfihwpl0t" path="res://scene/sv_scenes_01/bots_sv_02.tscn" id="5_q235o"]
-[ext_resource type="AudioStream" uid="uid://gie7w4ja3to0" path="res://Assets/MusicSound/wind.ogg" id="6_cpec2"]
-[ext_resource type="PackedScene" uid="uid://u4hc44xmcrfa" path="res://scene/Ui/FinishMenu.tscn" id="7_dwhdt"]
+[ext_resource type="AudioStream" uid="uid://cst5y7by0kyb5" path="res://MusicSound/music/frostbite.ogg" id="6_dwhdt"]
+[ext_resource type="PackedScene" path="res://scene/Ui/FinishMenu.tscn" id="7_dwhdt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("1_vc1mu")
@@ -881,9 +881,10 @@ position = Vector2(144, 290)
 [node name="bots_sv_06" parent="." instance=ExtResource("5_q235o")]
 position = Vector2(159, 530)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_cpec2")
+[node name="AudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dwhdt")
 autoplay = true
+parameters/looping = true
 
 [node name="LoseWin" parent="." groups=["LoseUI"] instance=ExtResource("7_dwhdt")]
 visible = false
