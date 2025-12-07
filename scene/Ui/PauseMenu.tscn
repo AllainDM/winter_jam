@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjcifwiu4gd0i"]
 
 [ext_resource type="Texture2D" uid="uid://b3wfa1406y7v" path="res://Assets/UiAssets/christmasfree.png" id="1_06cny"]
-[ext_resource type="Script" uid="uid://dsqwvoq6ml5xx" path="res://scene/Ui/pauseMenu.gd" id="1_vqva3"]
-[ext_resource type="Script" uid="uid://dvipotbmx6x07" path="res://scene/Ui/resumeButon.gd" id="3_7ciwc"]
-[ext_resource type="Script" uid="uid://dicl84t1tlox0" path="res://scene/Ui/buttonExitMainMenu.gd" id="4_qd0ei"]
+[ext_resource type="Script" uid="uid://dsqwvoq6ml5xx" path="res://script/UiScripts/pauseMenu.gd" id="1_vqva3"]
+[ext_resource type="Script" uid="uid://dvipotbmx6x07" path="res://script/UiScripts/resumeButon.gd" id="3_7ciwc"]
+[ext_resource type="Script" uid="uid://dicl84t1tlox0" path="res://script/UiScripts/buttonExitMainMenu.gd" id="4_qd0ei"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ciwc"]
 atlas = ExtResource("1_06cny")
