@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsn2pahtw8t2o"]
+
+[ext_resource type="Script" path="res://script/UiScripts/FinishUi.gd" id="1_rh1o5"]
+[ext_resource type="Texture2D" uid="uid://b3wfa1406y7v" path="res://Assets/UiAssets/christmasfree.png" id="2_0dadf"]
+[ext_resource type="Script" uid="uid://dvipotbmx6x07" path="res://script/UiScripts/resumeButon.gd" id="3_bjks8"]
+[ext_resource type="Script" uid="uid://dicl84t1tlox0" path="res://script/UiScripts/buttonExitMainMenu.gd" id="4_7ttvt"]
+[ext_resource type="FontFile" path="res://Assets/HUDSonicX1-Regular.otf" id="5_0dadf"]
+[ext_resource type="Texture2D" path="res://Assets/Lose_menu.png" id="6_bjks8"]
+[ext_resource type="Texture2D" path="res://Assets/WIN_MENU.png" id="7_7ttvt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ciwc"]
+atlas = ExtResource("2_0dadf")
+region = Rect2(67, 5, 89, 118)
+
+[node name="FinishUi" type="CanvasLayer"]
+script = ExtResource("1_rh1o5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = 59.99997
+offset_right = -54.0
+offset_bottom = 177.99997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.4319963, 1.2073771)
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_7ciwc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.213845
+offset_top = 16.56484
+offset_right = 54.21382
+offset_bottom = -11.435158
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.42434126, 1)
+theme_override_constants/separation = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/TextureRect/VBoxContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Начать заново
+"
+script = ExtResource("3_bjks8")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="PanelContainer/TextureRect/VBoxContainer/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+text = "Exit"
+script = ExtResource("4_7ttvt")
+
+[node name="Panel" type="Panel" parent="PanelContainer/TextureRect"]
+layout_mode = 0
+offset_left = -169.81934
+offset_top = -273.3197
+offset_right = -129.81934
+offset_bottom = -233.3197
+scale = Vector2(11.216953, 2.4674187)
+
+[node name="FinishWords" type="Label" parent="PanelContainer/TextureRect/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -1.392983
+offset_top = 9.734483
+offset_right = 418.60703
+offset_bottom = 33.734486
+scale = Vector2(0.10262568, 1)
+theme_override_fonts/font = ExtResource("5_0dadf")
+theme_override_font_sizes/font_size = 12
+text = "Дети остались без подарков :("
+horizontal_alignment = 1
+
+[node name="LoseMenu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(535, 284)
+scale = Vector2(0.22544643, 0.22544643)
+texture = ExtResource("6_bjks8")
+
+[node name="WinMenu" type="Sprite2D" parent="."]
+position = Vector2(541, 284)
+scale = Vector2(0.2279576, 0.2279576)
+texture = ExtResource("7_7ttvt")
+
+[connection signal="pressed" from="PanelContainer/TextureRect/VBoxContainer/MarginContainer/ResumeButton" to="PanelContainer/TextureRect/VBoxContainer/MarginContainer/ResumeButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/TextureRect/VBoxContainer/MarginContainer2/ExitButton" to="PanelContainer/TextureRect/VBoxContainer/MarginContainer2/ExitButton" method="_on_pressed"]
