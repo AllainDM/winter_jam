@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3js0rwrk3a8r"]
+[gd_scene load_steps=13 format=3 uid="uid://b3js0rwrk3a8r"]
 
 [ext_resource type="Script" uid="uid://nlnnjr3lo47m" path="res://script/Code_sv/bot_scene_sv01.gd" id="1_hy15l"]
 [ext_resource type="Texture2D" uid="uid://btycryiuinf8m" path="res://Artwork/ded_moroz_anim6.png" id="2_0hyqy"]
@@ -79,8 +79,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oms2k"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hy15l"]
-
 [node name="bots_sv_02" type="CharacterBody2D"]
 script = ExtResource("1_hy15l")
 
@@ -93,9 +91,3 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_oms2k")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("CircleShape2D_hy15l")

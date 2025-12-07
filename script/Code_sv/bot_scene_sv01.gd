@@ -18,16 +18,26 @@ var wander_timer: float = 0.0     # Таймер для смены цели
 # var wander_interval: float = 2.0  # Интервал смены цели (в секундах)
 var wander_interval: float = randf_range(1.0, 4.0)  # Интервал сразу рандомный
 
+# АКТИВАЦИЯ
+var player: Node2D = null
+var is_active: bool = false
+@export var activation_distance: float = 500.0  # Радиус активации
+
 
 func _ready():	
 	add_to_group("enemy")
-	# Инициализируем случайную позицию для блуждания
+	# # Инициализируем случайную позицию для блуждания
 	target_position = get_random_wander_target()
+
+	# player = get_tree().get_first_node_in_group("player")
+	# deactivate_bot()
+	# set_process(true)  # Включаем _process для проверки расстояния
 
 	# Тест смерти бота
 	# # Смерть через 3 секунды для теста
 	# await get_tree().create_timer(3.0).timeout
 	# die()
+
 
 # Функция для расчета рандомной позиции
 func get_random_wander_target() -> Vector2:

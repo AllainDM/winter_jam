@@ -69,4 +69,3 @@ func playFreezSound () -> void:
 
 func victory():
 	print("Победа")
-
