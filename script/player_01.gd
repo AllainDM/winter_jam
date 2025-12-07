@@ -15,7 +15,7 @@ var need_gifts = 5
 
 @onready var hitSoundPlayer : AudioStreamPlayer2D = $"hit-box_Area2D/AudioStreamPlayer2D"
 var hit_tracks = [
-	"res://MusicSound/freeze.ogg"
+	"res://Assets/MusicSound/freeze.ogg"
 	]
 
 func _ready():
