@@ -821,6 +821,11 @@ position = Vector2(-3.0517578e-05, 0.85876465)
 scale = Vector2(1.0000001, 0.99241203)
 polygon = PackedVector2Array(351.5274, 352.47195, 295.52747, 352.39682, 295.77432, 168.39697, 471.77417, 168.63312, 471.57025, 320.633, 455.57025, 320.6115, 455.742, 192.61163, 311.74213, 192.41846, 311.55963, 328.41833, 351.5596, 328.472)
 
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-2570.7205, -955.44995)
+scale = Vector2(8.203864, 4.867229)
+polygon = PackedVector2Array(483.15265, 349.95673, 295.52747, 352.39682, 295.77432, 168.39697, 471.77417, 168.63312, 469.36475, 367.38928, 456.5646, 369.004, 455.742, 192.61163, 311.74213, 192.41846, 311.55963, 328.41833, 482.92896, 324.68518)
+
 [node name="CollisionNature" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(7.3237762, 504.01028, 23.323761, 504.0317, 39.29155, 528.0532, 55.270065, 544.0747, 71.22711, 576.09607, 151.22705, 576.20337, 151.22705, 576.20337, 159.20557, 592.2141, 159.16263, 624.2141, 159.14117, 640.2141, -0.8586731, 639.9994, -0.6762085, 503.99954)
 
@@ -867,19 +872,31 @@ limit_right = 1150
 limit_bottom = 650
 
 [node name="bots_sv_02" parent="." instance=ExtResource("5_q235o")]
-position = Vector2(757, 283)
+position = Vector2(977, 327)
 
 [node name="bots_sv_03" parent="." instance=ExtResource("5_q235o")]
-position = Vector2(628, 134)
+position = Vector2(856, 169)
 
 [node name="bots_sv_04" parent="." instance=ExtResource("5_q235o")]
-position = Vector2(304, 139)
+position = Vector2(652, 63)
 
 [node name="bots_sv_05" parent="." instance=ExtResource("5_q235o")]
-position = Vector2(144, 290)
+position = Vector2(416, 98)
 
 [node name="bots_sv_06" parent="." instance=ExtResource("5_q235o")]
-position = Vector2(159, 530)
+position = Vector2(175, 213)
+
+[node name="bots_sv_07" parent="." instance=ExtResource("5_q235o")]
+position = Vector2(218, 426)
+
+[node name="bots_sv_08" parent="." instance=ExtResource("5_q235o")]
+position = Vector2(340, 559)
+
+[node name="bots_sv_09" parent="." instance=ExtResource("5_q235o")]
+position = Vector2(563, 619)
+
+[node name="bots_sv_10" parent="." instance=ExtResource("5_q235o")]
+position = Vector2(910, 628)
 
 [node name="AudioStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_dwhdt")
