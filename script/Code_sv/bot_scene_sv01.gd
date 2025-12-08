@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @onready var start_position: Vector2 = position
-var speed: int = 100
+var speed: int = 300
 var target: CharacterBody2D = null
 var can_move: bool = true
 
@@ -16,7 +16,7 @@ var target_position: Vector2 = Vector2.ZERO
 var is_first_movement = true
 
 
-var wander_radius: float = 150.0  # Радиус блуждания
+var wander_radius: float = 300.0  # Радиус блуждания
 var wander_timer: float = 0.0     # Таймер для смены цели
 # var wander_interval: float = 2.0  # Интервал смены цели (в секундах)
 var wander_interval: float = randf_range(1.0, 4.0)  # Интервал сразу рандомный
@@ -82,7 +82,6 @@ func get_random_wander_target() -> Vector2:
 		target1 = start_position + offset
 	
 	return target1
-
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

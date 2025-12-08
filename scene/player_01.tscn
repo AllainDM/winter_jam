@@ -1,26 +1,21 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxf27hwfsmf5g"]
+[gd_scene load_steps=22 format=3 uid="uid://cxf27hwfsmf5g"]
 
-[ext_resource type="Texture2D" uid="uid://yj2jv8ih15fn" path="res://Artwork/player.png" id="1_7vojy"]
 [ext_resource type="Script" uid="uid://ycgmnxhv74b7" path="res://script/player_01.gd" id="1_gw85p"]
 [ext_resource type="Texture2D" uid="uid://xx72j562epnb" path="res://Artwork/ded_moroz_anim3.png" id="3_22si4"]
 [ext_resource type="Texture2D" uid="uid://btycryiuinf8m" path="res://Artwork/ded_moroz_anim6.png" id="3_58s3r"]
 [ext_resource type="Texture2D" uid="uid://dgt5hn2gt5kce" path="res://Artwork/ded_moroz_anim2.png" id="3_ut5ij"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gw85p"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(0, 288, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ut5ij"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(48, 288, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_22si4"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(96, 288, 48, 48)
+atlas = ExtResource("3_58s3r")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58s3r"]
-atlas = ExtResource("1_7vojy")
-region = Rect2(144, 288, 48, 48)
+atlas = ExtResource("3_58s3r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3v40"]
+atlas = ExtResource("3_58s3r")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ql2r"]
 atlas = ExtResource("3_58s3r")
@@ -70,16 +65,13 @@ region = Rect2(64, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gw85p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ut5ij")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_22si4")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_58s3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3v40")
 }],
 "loop": false,
 "name": &"attack_down",
@@ -145,8 +137,7 @@ script = ExtResource("1_gw85p")
 texture_filter = 1
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_aspj3")
-animation = &"attack_up"
-frame_progress = 0.5272791
+animation = &"attack_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
