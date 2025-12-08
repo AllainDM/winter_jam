@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 const SPEED : float = 200.0
 
-
-
 var is_attacking : bool = false
 var attack_cooldown_time : float = 0.5
 var attack_cooldown : float = attack_cooldown_time
@@ -13,11 +11,12 @@ var frozen_elves = 0
 var found_gifts = 0
 
 # Необходимо найти подарков для победы.
-var need_gifts = 5
+var need_gifts = 9
 var hit_tracks = [
 	"res://Assets/MusicSound/freeze.ogg"
 	]
 var lose_canvas : CanvasLayer 
+var dirRight : bool = true
 
 @onready var hitSoundPlayer : AudioStreamPlayer2D = $"hit-box_Area2D/AudioStreamPlayer2D"
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
@@ -36,6 +35,10 @@ func _physics_process(delta: float) -> void:
 	var input_vector : Vector2 = Vector2.ZERO
 	if !is_attacking:
 		input_vector.x = Input.get_axis("ui_left", "ui_right")
+		if input_vector.x > 0 :
+			anim.flip_h = false
+		else :
+			anim.flip_h = true
 		input_vector.y = Input.get_axis("ui_up", "ui_down")
 		input_vector = input_vector.normalized()
 
